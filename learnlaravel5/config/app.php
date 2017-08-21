@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -155,6 +155,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        'Latrell\Alipay\AlipayServiceProvider',
 
     ],
 

@@ -45,7 +45,6 @@
                           }else{
                             str+="<li class='col-330 col-t'><a href='infor?id="+v.id+"' target='_blank'></a><a class='f18' href='../salary/infor' title='"+ v.productName+"' target='_blank'>"+ v.productName+"</a></li>"
                           }
-                           // str+="<li class='col-330 col-t'><a href='infor?id="+v.id+"' target='_blank'></a><a class='f18' href='../invest/infor' title='"+ v.productName+"' target='_blank'>"+ v.productName+"</a></li>";
                            str+="<li class='col-180'><span class='f20 c-333'>"+ v.productAmount+"</span>元</li>";
                            str+="<li class='col-110 relative'><span class='f20 c-orange'>"+ v.rate+"</span></li>";
                            str+="<li class='col-150'> <span class='f20 c-333'>"+ v.deadline+"</span>个月 </li>";
@@ -60,7 +59,6 @@
                                   }else{
                                     str+="<li class='col-120-2'> <a class='ui-btn btn-gray' href='../salary/infor.html'>还款中</a> </li>";
                                   }
-                                       // str+="<li class='col-120-2'> <a class='ui-btn btn-gray' href='infor.html'>还款中</a> </li>";
                                 }else{
                                   if(v.productTypeId==1){
                                     str+="<li class='col-120-2'> <a class='ui-btn btn-gray' style='background-color: green' href='infor?id="+v.id+"'>加入</a> </li>";
@@ -68,8 +66,7 @@
                                     str+="<li class='col-120-2'> <a class='ui-btn btn-gray' style='background-color: green' href='../uxplan/infor?id="+v.id+"'>加入</a> </li>";
                                   }else{
                                     str+="<li class='col-120-2'> <a class='ui-btn btn-gray' style='background-color: green' href='../salary/infor?id="+v.id+"'>加入</a> </li>";
-                                  }                                  
-                                       // str+="<li class='col-120-2'> <a class='ui-btn btn-gray' style='background-color: green' href='infor?id="+v.id+"'>加入</a> </li>";
+                                  }
                                 }
                          str+="</ul>";
                          str+="</div>";
