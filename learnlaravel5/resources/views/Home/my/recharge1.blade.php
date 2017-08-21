@@ -350,7 +350,7 @@
                   <em class="info2-bank" style="display: none;">
                   <label id="form:defaultBankName" style="font-size:16px;"> </label>
                   </em> </span> 
-                  <span class="quick-error33" id="bankCardError"></span> 
+                  <span class="quick-error3" id="bankCardError"></span> 
            
                 </div>
                 <div class="info-2"> <span class="info-tit">支付密码</span>
@@ -384,65 +384,45 @@
               </div>
             </div>
           </form>
-<script>
-	$(document).on('click','.imgs',function(){
-		//第三方id
-	    id = $(this).attr('attr-id');
-	    $('#thirds_id').val(id);
-	    //银行卡号
-	    card_num = $(this).attr('card_num');
-	    //充值金额
-	    rech_money=$('.pay-money-txt').val();
-	    $('#hrech_money').val(rech_money);
-	    rech_money1=$('#hrech_money').val();
-	    //用户id
-	    user_id=$(this).attr('user_id');
-	    $('#huser_id').val(user_id);
-	    huser_id=$('#huser_id').val();
-	    // alert(huser_id);
-	    $('#card_num').val(card_num);
-	    $("#card_num").attr("disabled","disabled");
-	    $(this).children('.i').show();
-	    $(this).parent().siblings().children().children('.i').hide();	
-	})
-$(document).on('click','.btn-paycz',function(){
-	thirds_id=$('#thirds_id').val();			
-	rech_money1=$('#hrech_money').val();
-	huser_id=$('#huser_id').val();
-	paypwd=$('#paypwd').val();
-    if(thirds_id==""){
-        	alert("请选择银行卡");
-    }        
-    if(rech_money1==""){
-			var $span = "<em></em>请输入充值金额";
-			$(".quick-error").html($span);
-    }
-    if(paypwd==""){
-			var $span = "<em></em>请输入支付密码";
-			$(".quick-error3").html($span);
-    }            
-    if(thirds_id=='' || rech_money1=='' || paypwd==''){
-        return false;
-    }					
-	if(window.confirm("你确定要充值吗？")){
-		$.ajax({
-			type:'post',
-			url:'recharge',
-			data:{thirds_id:thirds_id,rech_money:rech_money1,user_id:huser_id,paypwd:paypwd},
-			success:function(data){
-				if(data==0){
-					alert('充值成功')
-					location.href='';
-				}else{
-					alert('充值失败')
-					location.href='';
-				}
-			}
-		})
-	}else{
-		return false;
-	}
-})
+          <script>
+				$(document).on('click','.imgs',function(){
+					//第三方id
+				    id = $(this).attr('attr-id');
+				    $('#thirds_id').val(id);
+				    //银行卡号
+				    card_num = $(this).attr('card_num');
+				    //充值金额
+				    rech_money=$('.pay-money-txt').val();
+				    $('#hrech_money').val(rech_money);
+				    rech_money1=$('#hrech_money').val();
+				    //用户id
+				    user_id=$(this).attr('user_id');
+				    $('#huser_id').val(user_id);
+				    huser_id=$('#huser_id').val();
+				    // alert(huser_id);
+				    $('#card_num').val(card_num);
+				    $("#card_num").attr("disabled","disabled");
+				    $(this).children('.i').show();
+				    $(this).parent().siblings().children().children('.i').hide();	
+				})
+				$(document).on('click','.btn-paycz',function(){
+					thirds_id=$('#thirds_id').val();			
+					rech_money1=$('#hrech_money').val();
+					huser_id=$('#huser_id').val();
+					paypwd=$('#paypwd').val();
+					if(!window.confirm("你确定要充值吗？")){
+						return false;
+					}else{
+						$.ajax({
+							type:'post',
+							url:'recharge',
+							data:{thirds_id:thirds_id,rech_money:rech_money1,user_id:huser_id,paypwd:paypwd},
+							success:function(data){
+								alert(data)
+							}
+						})
+					}
+				})
           </script>
               <div class="alert-450" id="alert-updatePass" style="display: none;">
       <div class="alert-title">
@@ -632,8 +612,8 @@ $(document).on('click','.btn-paycz',function(){
 					$(this).css({"font-size":"24px","font-weight":"bold","font-family":"Arial"});
 				}
 
-	        $("#form\\:bankCardNo").val("请选择银行卡");
-	        var cardValue = "请选择银行卡";
+	        $("#form\\:bankCardNo").val("请输入银行卡号");
+	        var cardValue = "请输入银行卡号";
 	        $("#form\\:bankCardNo").focus(
 					   function(){
 						   	$(this).css({"font-size":"14px","font-weight":"bold","font-family":"Arial","border":"1px solid #0caffe", "color": "rgb(75, 73, 72)"});
@@ -645,7 +625,7 @@ $(document).on('click','.btn-paycz',function(){
 						function(){
 						   $(this).css("border","1px solid #D0D0D0");
 						   if($("#form\\:bankCardNo").val() == "") {
-							  $("#form\\:bankCardNo").val("请选择银行卡").css("color", "#D0D0D0");
+							  $("#form\\:bankCardNo").val("请输入银行卡号").css("color", "#D0D0D0");
 							   	$(this).css({"color":"#D0D0D0","font-size":"14px","font-weight":"normal"});
 					}
 				})
