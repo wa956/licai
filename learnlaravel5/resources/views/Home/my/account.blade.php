@@ -260,7 +260,14 @@
 					  <span class="zhsz-span3" style="color:green;">已认证</span>
 				  @endif
 			  </li>
-			  <li><i class="grzxbg p-danger"></i><span class="zhsz-span1">第三方支付</span><span class="zhsz-span2">未开通</span><span class="zhsz-span3"><a href="openthird1">开通</a></span></li>
+			  <!-- <li><i class="grzxbg p-danger"></i><span class="zhsz-span1">第三方支付</span><span class="zhsz-span2">未开通</span><span class="zhsz-span3"><a href="openthird1">开通</a></span></li> -->
+		  	  <li>
+			  @if($persion_info['thirds']==1)
+				  <i class="grzxbg p-right"></i><span class="zhsz-span1">第三方支付</span><span class="zhsz-span2">已开通</span><span class="zhsz-span3" style="color:green;">已开通</span>
+				  @else
+				  <i class="grzxbg p-danger"></i><span class="zhsz-span1">第三方支付</span><span class="zhsz-span2">未开通</span><span class="zhsz-span3"><a href="openthird1">开通</a></span>
+			  @endif
+			  </li>
 			  <li> <i class="grzxbg p-right"></i> <span class="zhsz-span1">电子邮箱</span> <span class="zhsz-span2">{{$persion_info['email']}}</span> <span class="zhsz-span3"> <a href="javascript:void(0)" onclick="showSpan('alert-updateEmail')">更改</a> </span> </li>
 			  <li><i class="grzxbg p-right"></i><span class="zhsz-span1">登录密码</span><span class="zhsz-span2"></span><span class="zhsz-span3"><a href="javascript:void(0)" onclick="showSpan('alert-updatePass')">更改</a></span></li>
 		  </ul>

@@ -92,6 +92,18 @@ Route::any('invest/order', 'Home\InvestController@order');
 //添加订单
 Route::any('invest/addOrder', 'Home\InvestController@addOrder');
 
+//我要投资（薪计划） 首页
+Route::any('salary/index', 'Home\SalaryController@index');
+//我要投资 详情 
+Route::any('salary/infor', 'Home\SalaryController@infor');
+//校验
+Route::any('salary/jiaoyan', 'Home\SalaryController@jiaoyan');
+//分类查询
+Route::any('salary/typeShow', 'Home\SalaryController@typeShow');
+//订单展示
+Route::any('salary/order', 'Home\SalaryController@order');
+//添加订单
+Route::any('salary/addOrder', 'Home\SalaryController@addOrder');
 
 
 //手机验证
@@ -142,6 +154,15 @@ Route::any('safe/index', 'Home\SafeController@index');
  Route::any('company/contact', 'Home\CompanyController@contact');    
     // 公司公告详细
  Route::any('company/notice', 'Home\CompanyController@notice');
+
+//支付宝支付处理路由
+Route::get('alipay','Home\alipayController@Alipay');  // 发起支付请求
+Route::any('notify','Home\alipayController@AliPayNotify'); //服务器异步通知页面路径
+Route::any('return','Home\alipayController@AliPayReturn');  //页面跳转同步通知页面路径
+
+
+
+ 
 //后台  首页
 Route::any('admin/index', 'Admin\IndexController@index');
 
@@ -172,7 +193,6 @@ Route::any('admin/rbac/permission', 'Admin\RbacController@permission');
 Route::any('admin/rbac/admin_list', 'Admin\RbacController@admin_list');
     // 管理员添加
 Route::any('admin/rbac/admin_add', 'Admin\RbacController@admin_add');
-
 
 
 Route::get('cookieset', function()
