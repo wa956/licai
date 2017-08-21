@@ -35,7 +35,7 @@
                 </tr>
                 <tr>
                     <td>年利率：</td>
-                    <td><input type="text" disabled="disabled" value="<?= number_format($data['rate'],2)?>%">
+                    <td><input type="text" disabled="disabled" value="<?= number_format($data['rate'],2)?>">%
                         <input type="hidden" name="rate" value="<?= number_format($data['rate'],2)?>">
                     </td>
                 </tr>
@@ -47,13 +47,13 @@
                 </tr>
                 <tr>
                     <td>期限时长：</td>
-                    <td><input type="text" disabled="disabled" value="<?= $data['deadline']?>个月">
+                    <td><input type="text" disabled="disabled" value="<?= $data['deadline']?>">个月
                          <input type="hidden" name="deadline" value="<?= $data['deadline']?>">
                     </td>
                 </tr>
                 <tr>
                     <td>年息：</td>
-                    <td><input type="text" disabled="disabled" value="<?= $data['annualinterest']?>元">
+                    <td><input type="text" disabled="disabled" value="<?= $data['annualinterest']?>">元
                         <input type="hidden" name="annualinterest" value="<?= $data['annualinterest']?>">
                     </td>
                 </tr>

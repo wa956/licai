@@ -35,7 +35,7 @@ class LoginController extends Controller{
         $model = new Userinfo();
         $res = $model->dlsd($username,$password);
         if($res==1){
-            return redirect('index');
+            return view('Home/index/index');
         }else{
             echo "密码错误";
         }
