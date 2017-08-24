@@ -6,11 +6,12 @@ use Illuminate\Support\Facades\Input;
 
 
 //首页
-class IndexController extends Controller{
+class IndexController extends Rbac\My_Controller{
     public function index()
     {
-        return view('Admin/index/index');
-    }    
+    	$data = $this->createLoginList();
+        return view('Admin/index/index',['name'=>$data['name']]);
+    }
     public function welcome()
     {
         return view('Admin/index/welcome');

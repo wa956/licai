@@ -156,7 +156,8 @@ Route::any('safe/index', 'Home\SafeController@index');
  Route::any('company/notice', 'Home\CompanyController@notice');
 
 //支付宝支付处理路由
-Route::get('alipay','Home\alipayController@Alipay');  // 发起支付请求
+Route::any('alipay','Home\alipayController@Alipay');  // 发起支付请求
+
 Route::any('notify','Home\alipayController@AliPayNotify'); //服务器异步通知页面路径
 Route::any('return','Home\alipayController@AliPayReturn');  //页面跳转同步通知页面路径
 
@@ -169,6 +170,12 @@ Route::any('admin/index', 'Admin\IndexController@index');
 Route::any('admin/welcome', 'Admin\IndexController@welcome');
     //登录
 Route::any('admin/login', 'Admin\LoginController@index');
+    //登录执行
+Route::any('admin/login_do', 'Admin\LoginController@login_do');
+     // 验证密码
+Route::any('admin/password_list', 'Admin\LoginController@password_list');   
+    // 退出
+Route::any('admin/login_out', 'Admin\LoginController@login_out');
     //会员列表
 Route::any('admin/member/lists', 'Admin\MemberController@lists');
     // 会员添加
@@ -193,6 +200,35 @@ Route::any('admin/rbac/permission', 'Admin\RbacController@permission');
 Route::any('admin/rbac/admin_list', 'Admin\RbacController@admin_list');
     // 管理员添加
 Route::any('admin/rbac/admin_add', 'Admin\RbacController@admin_add');
+
+
+//================
+                // 添加角色关联的用户
+Route::any('user/user_list', 'Admin\Rbac\UserController@user_list');
+                // 管理员列表
+Route::any('user/user_add_list', 'Admin\Rbac\UserController@user_add_list');           //删除管理员
+Route::any('user/user_del', 'Admin\Rbac\UserController@user_del');           // 权限控制
+Route::any('note/note_list', 'Admin\Rbac\NoteController@note_list');           // 添加权限
+Route::any('note/note_add_list', 'Admin\Rbac\NoteController@note_add_list');           //权限提交
+Route::any('note/note_add_do', 'Admin\Rbac\NoteController@note_add_do');
+               //删除权限
+Route::any('note/note_del', 'Admin\Rbac\NoteController@note_del');
+               //更新权限名称
+Route::any('note/name_up', 'Admin\Rbac\NoteController@name_up');
+           // 角色控制
+Route::any('role/role_list', 'Admin\Rbac\RoleController@role_list');           // 添加控制
+Route::any('role/role_add_list', 'Admin\Rbac\RoleController@role_add_list');           // 角色提交
+Route::any('role/role_add_do', 'Admin\Rbac\RoleController@role_add_do');           // 角色提交
+Route::any('user/user_add_do', 'Admin\Rbac\UserController@user_add_do');  
+                // 权限控制
+Route::any('role/role_note_list', 'Admin\Rbac\Role_noteController@role_note_list');   
+                // 权限添加
+Route::any('role/role_note_add', 'Admin\Rbac\Role_noteController@role_note_add');                 
+                // 添加角色关联的权限
+Route::any('role/user_role_list', 'Admin\Rbac\User_roleController@user_role_list');                
+                // 用户控制
+Route::any('role/user_role_add', 'Admin\Rbac\User_roleController@user_role_add');                  
+           
 
 
 Route::get('cookieset', function()
