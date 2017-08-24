@@ -12,23 +12,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-use Illuminate\Support\Facades\Input;
-
-
 class alipayController extends Controller{
 
 // 发起支付请求
-
-public function Alipay(){   
-    $post=Input::get();
-    $productName=$post['productName'];
-    $order_sn=$post['order_sn'];
+public function Alipay(){
     $alipay = app('alipay.web');
-    $alipay->setOutTradeNo("$order_sn");
+    // E0002332050;
+    $alipay->setOutTradeNo('E0002332050');
     $alipay->setTotalFee('0.01');
-    $alipay->setSubject("$productName");
-    $alipay->setBody("商品："."$productName");
-
+    $alipay->setSubject('小米5s');
+    $alipay->setBody('商品：支付宝支付测试');
 
     $alipay->setQrPayMode('5'); //该设置为可选1-5，添加该参数设置，支持二维码支付。
 

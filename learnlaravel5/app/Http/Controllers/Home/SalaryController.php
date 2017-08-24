@@ -71,7 +71,7 @@ class SalaryController extends Controller{
             }else{
                 $info['jx'] = "已完成";
                 $info['start'] = 0;
-
+//                p($info);die;
             }
 
         }else{
@@ -121,12 +121,8 @@ class SalaryController extends Controller{
             $data = ajaxJsonencode($Productinfo->oneShow($id));
             //查找未使用的红包
             $rebData = ajaxJsonencode($RedBag->showData());
-
-            $order_sn="X".time();
             $info = array(
                  'user_id'          =>$userdata['id'],
-                 'order_sn'          =>$order_sn,
-
                  'productId'        =>$data['id'],
                  'order_money'     =>$orderAmount,
                  'rate'             =>$data['rate'],
