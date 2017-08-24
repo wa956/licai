@@ -18,7 +18,7 @@ class alipayController extends Controller{
 public function Alipay(){
     $alipay = app('alipay.web');
     // E0002332050;
-    $alipay->setOutTradeNo('E0002345455445454');
+    $alipay->setOutTradeNo('E0002332050');
     $alipay->setTotalFee('0.01');
     $alipay->setSubject('小米5s');
     $alipay->setBody('商品：支付宝支付测试');

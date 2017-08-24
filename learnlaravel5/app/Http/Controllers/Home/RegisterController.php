@@ -1,12 +1,11 @@
 <?php
 namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
-
+use App\Http\Model\Home\register;
 use Illuminate\Support\Facades\Input;
 use DB;
 use Redis;
 use App\Http\Model\Home\Userinfo;
-use App\Http\Model\Home\Redpacket;
 //注册
 class RegisterController extends Controller{
     public function register(){
@@ -63,7 +62,6 @@ class RegisterController extends Controller{
        }
     }
 
-    //注册入库
     public function regadd()
     {
         $data = Input::All();
@@ -78,26 +76,8 @@ class RegisterController extends Controller{
         $model = new Userinfo();
         $res = $model->regrk($data);
         if($res==1){
-            //注册成功生成红包码
-            $nowtime = time();
-            $hbcode = 'HB_'.$nowtime.rand(10,99);
-            $red = new Redpacket();
-            $res = $red->hbm($hbcode,$phone);
-            if($res==1){
-
-                $hbcode2 = 'HB_'.$nowtime.rand(10,99);
-                $res2 = $red->hbm2($hbcode2,$phone);
-                if($res2==1){
-
-                    $hbcode3 = 'HB_'.$nowtime.rand(10,99);
-                    $res3 = $red->hbm3($hbcode3,$phone);
-                    if($res3==1){
-                        return redirect('register1');
-                    }
-                }
+                return redirect('register1');
             }
-
-        }
 
     }
 
