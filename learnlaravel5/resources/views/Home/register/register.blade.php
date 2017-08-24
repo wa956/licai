@@ -141,10 +141,12 @@
         }
         if (!reg.test(tel)){
             alert("手机号错误")
-            $('#phone').css('border-color','red');
+            // $('#phone').css('border-color','red');
             return false;
         }
 
+        var obj = $("#btn");
+        settime(obj);
         $.ajax({
             type: 'get',
             url: 'http://www.duoying.com/checkphone',
@@ -153,9 +155,9 @@
                 if (res == 1){
                     alert("该手机号已注册");
                     return false;
+                    
                 }else{
-                    var obj = $("#btn");
-                    settime(obj);
+                    
             }
             }
 
@@ -183,10 +185,10 @@
         var reg=/^\d{4}$/
         var tel = $('#phone').val();
         var code = $('#phonVerify').val();
-//        if(!reg.test(code)){
-//            $('#phonVerify').css('border-color','red');
-//            return false;
-//        }
+       if(!reg.test(code)){
+           alert(验证码错误)
+           return false;
+       }
 
         $.ajax({
             type: 'get',
@@ -212,20 +214,9 @@
         });
 
     }
-    //验证码
+    //验证码验证
 
-    var verifyCode = new GVerify("v_container");
-
-    document.getElementById("my_button").onclick = function(){
-        var res = verifyCode.validate(document.getElementById("code_input").value);
-        if(res){
-            alert("验证正确");
-            return ture;
-        }else{
-            alert("验证码错误");
-            return false;
-        }
-    }
+   
     //服务条款
     function checkterms(){
         var isChecked = $("#protocol").is(":checked");

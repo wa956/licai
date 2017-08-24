@@ -31,7 +31,7 @@
           <div class=""><a href="../register" class="c-orange" title="免费注册">免费注册</a></div>
         </li>
         <li>
-          <div class=""><a href="../login" class="js-login" title="登录">登录</a></div>
+          <!-- <div class=""><a href="../login" class="js-login" title="登录">登录</a></div> -->
         </li>
       </ul>
     </div>
