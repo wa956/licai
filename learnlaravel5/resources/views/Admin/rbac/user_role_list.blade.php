@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
@@ -30,30 +30,57 @@
 			<button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜权限节点</button>
 		</form>
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="admin_permission_add('添加权限节点','admin-permission-add.html','','310')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加权限节点</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" href="../../role/role_add_list"><i class="Hui-iconfont">&#xe600;</i> 添加角色</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
+	<form action="user_role_add" method="post">
+	<!-- <input type="hidden" name="_token" value="<?= csrf_token(); ?>"> -->
+	<input type="hidden" name="id" value="<?= $id ?>">	
 	<table class="table table-border table-bordered table-bg">
-		<thead>
+<!-- 		<thead>
 			<tr>
 				<th scope="col" colspan="7">权限节点</th>
 			</tr>
 			<tr class="text-c">
 				<th width="25"><input type="checkbox" name="" value=""></th>
 				<th width="40">ID</th>
-				<th width="200">权限名称</th>
-				<th>字段名</th>
+				<th width="200">用户角色</th>
+				<th>加入时间</th>
 				<th width="100">操作</th>
 			</tr>
-		</thead>
+		</thead> -->
 		<tbody>
-			<tr class="text-c">
-				<td><input type="checkbox" value="1" name=""></td>
-				<td>1</td>
-				<td>栏目添加</td>
-				<td></td>
-				<td><a title="编辑" href="javascript:;" onclick="admin_permission_edit('角色编辑','admin-permission-add.html','1','','310')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_permission_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-			</tr>
+		<tr>
+			<th class="center" colspan="4" style="font-size:20px; color:#abcdef; padding-right:90%;">已拥有用户↓</th>
+		</tr>
+		<?php foreach ($user_role_list_true as $key => $value): ?>
+		<tr>
+			<td class="center"><input type="checkbox" name="box_id[]" value="<?= $value->id ?>" class="center" checked ></td>
+			<td class="center"><?= $value->username ?></td>
+			<td class="center"><?= $value->email ?><br></td>
+			<td class="center"><?= $value->created_time ?><br></td>
+		</tr>
+		<?php endforeach ?>	
+		<tr>
+			<th class="center" colspan="4" style="font-size:20px; color:#abcdef; padding-right:90%;">未拥有用户↓</th>
+		</tr>		
+		<?php foreach ($user_role_list_false as $key => $value): ?>
+		<tr>
+			<td class="center"><input type="checkbox" name="box_id[]" value="<?= $value->id ?>"></td>
+			<td class="center"><?= $value->username ?></td>
+			<td class="center"><?= $value->email ?><br></td>
+			<td class="center"><?= $value->created_time ?><br></td>
+		</tr>
+		<?php endforeach ?>	
+<!-- 		<tr>
+			<td class="center" colspan="4" style="padding-right:4%; height:50px; "><input type="submit" value="提交" class="tdBtn "></td>
+		</tr> -->		
 		</tbody>
 	</table>
+		<div class="row cl">
+		<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+			<input class="btn btn-primary radius" id="submit-botton" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+		</div>
+	</div>
+	</form>
 </div>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="../../Admin/lib/jquery/1.9.1/jquery.min.js"></script> 

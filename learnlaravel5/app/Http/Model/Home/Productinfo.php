@@ -38,15 +38,26 @@ class Productinfo extends Model
 
     public function upda($id,$money)
     {
-
         $z = str_replace(',','',$money);
         $x = intval($z);
         $re = DB::update("update productinfo set repayments=repayments+".$x." where id='$id'");
         return $re;
+    }
+    //计算薪计划单个产品数量
+    public function salarycount($id)
+    {
+        $res=DB::table('bill')->where(['product_id'=>$id])->count();
+        $data = DB::table('productinfo')->where("id",$id)->first();
+        $data=ajaxJsonencode($data);
+        if($data['number']==$res){
+            DB::update("update productinfo set contact=1 where id='$id'");
+        }        
+        return $res;
+    }
+    public function checksalarys()
+    {
 
     }
-
-
     /**
      * The attributes excluded from the model's JSON form.
      *
