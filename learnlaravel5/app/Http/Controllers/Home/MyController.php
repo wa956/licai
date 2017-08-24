@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Home;
 
-use App\Http\Controllers\Home\CommonController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -23,7 +23,7 @@ use Illuminate\Session\CookieSessionHandler;
 
 
 //首页
-class MyController extends CommonController{
+class MyController extends Controller{
 
     public function index()
     {

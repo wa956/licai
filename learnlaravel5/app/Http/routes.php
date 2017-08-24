@@ -106,19 +106,6 @@ Route::any('salary/order', 'Home\SalaryController@order');
 Route::any('salary/addOrder', 'Home\SalaryController@addOrder');
 
 
-//优选计划
-Route::any('uxplan/infor', 'Home\UxplanController@infor');
-//校验
-Route::any('uxplan/jiaoyan', 'Home\UxplanController@jiaoyan');
-//分类查询
-Route::any('uxplan/typeShow', 'Home\UxplanController@typeShow');
-//订单展示
-Route::any('uxplan/order', 'Home\UxplanController@order');
-//添加订单
-Route::any('uxplan/addOrder', 'Home\UxplanController@addOrder');
-
-
-
 //手机验证
 Route::any('my/phone', 'Home\MyController@phone');
 //修改手机页面
@@ -206,15 +193,6 @@ Route::any('admin/rbac/permission', 'Admin\RbacController@permission');
 Route::any('admin/rbac/admin_list', 'Admin\RbacController@admin_list');
     // 管理员添加
 Route::any('admin/rbac/admin_add', 'Admin\RbacController@admin_add');
-
-//投资管理
-Route::any('admin/lc/uplan', 'Admin\LcController@uplan');
-Route::any('admin/lc/uxplan', 'Admin\LcController@uxplan');
-Route::any('admin/lc/xplan', 'Admin\LcController@xplan');
-Route::any('admin/lc/udel', 'Admin\LcController@udel');
-Route::any('admin/lc/uupdate', 'Admin\LcController@uupdate');
-Route::any('admin/lc/uadd', 'Admin\LcController@uadd');
-Route::any('admin/lc/duadd', 'Admin\LcController@duadd');
 
 
 Route::get('cookieset', function()
