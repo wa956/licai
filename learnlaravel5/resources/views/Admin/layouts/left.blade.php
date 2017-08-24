@@ -31,5 +31,15 @@
 			</ul>
 		</dd>
 	</dl>
+	<dl id="menu-footer">
+			<dt><i class="Hui-iconfont">&#xe64d;</i> 投资计划<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="../../admin/lc/uplan" data-title="U计划" href="javascript:void(0)">U计划</a></li>
+					<li><a data-href="../../admin/lc/uxplan" data-title="优选计划" href="javascript:void(0)">优选计划</a></li>
+					<li><a data-href="../../admin/lc/xplan" data-title="薪计划" href="javascript:void(0)">薪计划</a></li>
+			</ul>
+		</dd>
+	</dl>
 </div>
 @show
