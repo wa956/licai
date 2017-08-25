@@ -43,10 +43,13 @@ class MyController extends CommonController{
     }
     public function Arr($arr){
         return json_decode(json_encode($arr),true);
-    } 
+    }
     //开通第三方
     public function openthird(){
-        $user_id = session('user_id');
+//        Cache::put('id',1,60);
+//        session('user_id')
+//        $user_id=Cache::get('id');
+         $user_id = session('user_id');
         $model=new My();
         if($post=Input::get()){
             $post['user_id']=$user_id;
@@ -55,7 +58,11 @@ class MyController extends CommonController{
                 echo 1;
             }
         }
+        // return view('Home/my/openthird');
     }
+    // public function ok(){
+    //     return view('Home/my/ok');
+    // }
     //渲染第三方
     public function openthird1(){
         $user_id = session('user_id');
@@ -75,11 +82,12 @@ class MyController extends CommonController{
             if($res==0){
                 echo 0;
             }else{
-                echo 1; 
+                echo 1;
             }
         }
+        // return view('Home/my/recharge');
     }
-     //充值1
+    //充值1
     public function recharge1(){
         $user_id = session('user_id');
         $model=new My();
@@ -90,50 +98,40 @@ class MyController extends CommonController{
         if($res['thirds']==0){
             return view('Home/my/recharge');
         }else{
-        $userbankcard=$model1->userbankcard($user_id);
-        $userbankcard=$this->Arr($userbankcard);
-        foreach($userbankcard as $k=>$v){
-            $idcard=substr($v['idcard'],-17,-1);
-            $card_num=substr($v['card_num'],-15,-1);
-            $zer = str_replace($idcard, "****************", $v['idcard']);
-            $zer2 = str_replace($card_num, "****", $v['card_num']);
-            $userbankcard[$k]['idcard'] = $zer; 
-            $userbankcard[$k]['card_num'] = $zer2; 
+            $userbankcard=$model1->userbankcard($user_id);
+            $userbankcard=$this->Arr($userbankcard);
+            foreach($userbankcard as $k=>$v){
+                $idcard=substr($v['idcard'],-17,-1);
+                $card_num=substr($v['card_num'],-15,-1);
+                $zer = str_replace($idcard, "****************", $v['idcard']);
+                $zer2 = str_replace($card_num, "****", $v['card_num']);
+                $userbankcard[$k]['idcard'] = $zer;
+                $userbankcard[$k]['card_num'] = $zer2;
+            }
+            return view('Home/my/recharge1',['userbankcard'=>$userbankcard,'banks'=>$banks]);
         }
-        return view('Home/my/recharge1',['userbankcard'=>$userbankcard,'banks'=>$banks]);
-        }
-    } 
+    }
     //提现执行：
     public function withdrawals(){
-        $model=new My();
         if($post=Input::get()){
-            $res=$model->withdrawals($post);
-            // print_r($res);die;
-            if($res==1){
-                echo 1;
-            }else if($res==2){
-                echo 2;
-            }else{
-                echo 3;
-            }        
+            print_r($post);
         }
-    } 
+        // return view('Home/my/withdrawals');
+    }
     //提现渲染
     public function withdrawals1(){
-        $user_id = session('user_id');      
+        Cache::put('id',1,60);
+        $user_id=Cache::get('id');
         $model=new My();
-        $model1=new Bank();
         $res=$model->getuser($user_id);
         $res=$this->Arr($res);
-        $userbankcard=$model1->userbankcard($user_id);
-        $userbankcard=$this->Arr($userbankcard);
-        // print_r($userbankcard);
+        print_r($res);
         if($res['thirds']==0){
-           return view('Home/my/recharge');
+            return view('Home/my/recharge');
         }else{
-           return view('Home/my/withdrawals1',['res'=>$res,'userbankcard'=>$userbankcard]);
+            return view('Home/my/withdrawals1',['res'=>$res]);
         }
-    } 
+    }
     //红包
     public function redbag(){
         $id   = session('user_id');

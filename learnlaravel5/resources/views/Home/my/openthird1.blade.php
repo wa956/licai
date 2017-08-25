@@ -37,14 +37,14 @@
             <ul>
               <li>
                 <label for="email">邮箱</label>
-                <label id="email">{{$data->email}}</label>
-                <div id="email1"></div>
+                <label id="form:email">{{$data->email}}</label>
               </li>
             </ul>
             <!-- <h6>手机号已绑定</h6> -->
             <ul>
               <li>
                 <label for="phone">手机号</label>
+                <input type="hidden" name="" value="15055100139">
                 <label>{{$data->telephone}}</label>
               </li>
               <li>
@@ -85,30 +85,6 @@
         </div>
       </div> 
 <script type="text/javascript">
-// $(function(){
-//   var email=$('#email').text()
-//     if(email==''){
-//       $('#email').html('<input type="text" id="emails" class="pay-txt" maxlength="6" placeholder="请填写邮箱">')       
-//     }else{
-        
-//     }
-// })
-//邮箱
-// $(document).on("blur","#emails",function(){
-//     var emails=$(this).val()
-//     alert(emails)
-//     var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
-//     // var flag=reg.test(emails)
-//     if(emails==""){
-//       $("#email1").html('<span style="color: red">邮箱不能为空</span>')
-//       return false;
-//     }else if(flag){
-//       $("#email1").html('<span style="color: green">通过验证</span>')
-//     }else{
-//       $("#email1").html('<span style="color: red">输入邮箱不正确</span>')
-//       return false;
-//     }
-// })
 //真实姓名
 $(document).on("blur","#realname",function(){
       var realname=$(this).val()
@@ -116,12 +92,10 @@ $(document).on("blur","#realname",function(){
       var flag=reg.test(realname)
       if(realname==""){
         $("#realnameErrorDiv").html('<span style="color: red">真实姓名不能为空</span>')
-            return false;
       }else if(flag){
         $("#realnameErrorDiv").html('<span style="color: green">通过验证</span>')
       }else{
         $("#realnameErrorDiv").html('<span style="color: red">姓名格式不合法</span>')
-           return false;
       }
 })
 //身份证号
@@ -131,27 +105,30 @@ $(document).on("blur","#idcard",function(){
     var flag = reg.test(idcard); //true
     if(idcard==""){
       $("#id_card").html('<span style="color: red">身份证号不能为空</span>')
-    }else if(flag){
-      $.ajax({
-        url:"idcard",
-        data:{idcard:idcard},
-        dataType:"json",
-        type:"GET",
-        success:function(msg){
-          if(msg==0){
-            $("#id_card").html('<span style="color: red">身份证不存在</span>')
-          }
-          if(msg==1){
-            $("#id_card").html('<span style="color: green">通过验证</span>')
-          }
-          if(msg==2){
-            $("#id_card").html('<span style="color: green">已被认证</span>')
-          }
-        }
-      })
     }else{
-      $("#id_card").html('<span style="color: red">身份证格式错误</span>')
+      $("#id_card").html('<span style="color: green">通过验证</span>')
     }
+    // }else if(flag){
+    //   $.ajax({
+    //     url:"idcard",
+    //     data:{idcard:idcard},
+    //     dataType:"json",
+    //     type:"GET",
+    //     success:function(msg){
+    //       if(msg==0){
+    //         $("#id_card").html('<span style="color: red">身份证不存在</span>')
+    //       }
+    //       if(msg==1){
+    //         $("#id_card").html('<span style="color: green">通过验证</span>')
+    //       }
+    //       if(msg==2){
+    //         $("#id_card").html('<span style="color: red">已被认证</span>')
+    //       }
+    //     }
+    //   })
+    // }else{
+    //   $("#id_card").html('<span style="color: red">身份证格式错误</span>')
+    // }
 })
 //支付密码
 $(document).on("blur","#paypwd",function(){
@@ -160,12 +137,10 @@ $(document).on("blur","#paypwd",function(){
     var flag=reg.test(paypwd)
     if(paypwd==""){
       $("#passwd").html('<span style="color: red">支付密码不能为空</span>')
-      return false;
     }else if(flag){
       $("#passwd").html('<span style="color: green">通过验证</span>')
     }else{
       $("#passwd").html('<span style="color: red">输入密码不正确</span>')
-      return false;
     }
 })
 //银行卡号
@@ -175,12 +150,10 @@ $(document).on("blur","#card_num",function(){
     var flag=reg.test(card_num)
     if(card_num==""){
       $("#cardnum").html('<span style="color: red">银行卡号不能为空</span>')
-      return false;
     }else if(flag){
       $("#cardnum").html('<span style="color: green">通过验证</span>')
     }else{
-      $("#cardnum").html('<span style="color: red">请输入16-19位银行卡号</span>')
-      return false;
+      $("#cardnum").html('<span style="color: red">请输入21位银行卡号</span>')
     }
 })  
 $('#ok').click(function(){
@@ -196,40 +169,25 @@ $(document).on('click','#paysSpan li',function(){
     $(this).siblings().children('#i').hide();
  })
 $('.btn-paycz').click(function(){
-    var realname=$('#realname').val();
-    var idcard=$('#idcard').val();
+  	var realname=$('#realname').val();
+  	var idcard=$('#idcard').val();
     var paypwd=$('#paypwd').val();
-    var card_num=$('#card_num').val();
+  	var card_num=$('#card_num').val();
     var bank_id=id;
-    if(realname==""){
-      $("#realnameErrorDiv").html('<span style="color: red">真实姓名不能为空</span>')
-    }
-    if(idcard==""){
-      $("#id_card").html('<span style="color: red">身份证号不能为空</span>')
-    }        
-    if(paypwd==""){
-      $("#passwd").html('<span style="color: red">支付密码不能为空</span>')
-    }
-    if(card_num==""){
-      $("#cardnum").html('<span style="color: red">银行卡号不能为空</span>')
-    }
-    if(bank_id==""){
-        alert("请选择银行卡");
-    }               
-    if(realname=='' || idcard=='' || paypwd=='' || card_num=='' || bank_id==""){
+    if(realname=='' || idcard=='' || paypwd=='' || card_num==''){
         return false;
     }
     $.ajax({
-      type:'post',
-      url:'openthird',
-      dataType:'json',
-      data:{realname:realname,idcard:idcard,paypwd:paypwd,card_num:card_num,bank_id:bank_id},
-      success:function(data){
-        if(data==1){
-          $('#alert-activeEmail').show();
-        }
-      }
-    })      
+    	type:'post',
+    	url:'openthird',
+    	dataType:'json',
+    	data:{realname:realname,idcard:idcard,paypwd:paypwd,card_num:card_num,bank_id:bank_id},
+    	success:function(data){
+    		if(data==1){
+    			$('#alert-activeEmail').show();
+    		}
+    	}
+    })     	
 })
 </script>
         <div class="pay-tipcon"> 1、为切实保障投资人的利益，亿人宝将理财资金托管在<a href="http://www.htmlsucai.com" target="_blank">丰付第三方支付</a>平台。平台是2012年6月获批中国人民银行支付许可证和中国证监会基金支付许可的第三方支付公司，在金融支付领域业界领先地位。详情请登录<a href="http://www.htmlsucai.com" target="_blank">丰付支付</a>官方网站查看。<br>

@@ -71,9 +71,11 @@ class SalaryController extends Controller{
                 $jssj = diffBetweenTwoDays(date('Y-m-d'),date("Y-m-d",strtotime("+".$info['deadline']." month",strtotime("".$info['entime'].""))));
                 //计算出用户已经收益多钱
                 $info['start'] = 1;
+//                p($jssj);die;
             }else{
                 $info['jx'] = "已完成";
                 $info['start'] = 0;
+
             }
 
         }else{
@@ -123,10 +125,12 @@ class SalaryController extends Controller{
             $data = ajaxJsonencode($Productinfo->oneShow($id));
             //查找未使用的红包
             $rebData = ajaxJsonencode($RedBag->showData());
+
             $order_sn="X".time();
             $info = array(
                  'user_id'          =>$userdata['id'],
                  'order_sn'          =>$order_sn,
+
                  'productId'        =>$data['id'],
                  'order_money'     =>$orderAmount,
                  'rate'             =>$data['rate'],

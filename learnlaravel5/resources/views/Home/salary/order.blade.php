@@ -16,7 +16,9 @@
 </div>
 
         <div class="item-detail-body clearfix mrt30 ui-tab">
+
             <form action="../alipay" method="post">
+
                 <input type="hidden" name="productId" value="<?= $data['productId']?>">
                 <input type="hidden" name="userid" value="<?= $data['user_id']?>">
             <center>
@@ -34,6 +36,7 @@
                     </td>
                 </tr>                
                 <tr>
+
                     <td>投资金额：</td>
                     <td><input type="text" disabled="disabled" value="<?= number_format($data['order_money'],2)?>">
                         <input type="hidden" name="order_money"  value="<?= number_format($data['order_money'],2)?>">

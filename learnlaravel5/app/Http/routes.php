@@ -166,6 +166,7 @@ Route::any('safe/index', 'Home\SafeController@index');
 
 //支付宝支付处理路由
 Route::any('alipay','Home\alipayController@Alipay');  // 发起支付请求
+
 Route::any('notify','Home\alipayController@AliPayNotify'); //服务器异步通知页面路径
 Route::any('return','Home\alipayController@AliPayReturn');  //页面跳转同步通知页面路径
 
@@ -217,6 +218,7 @@ Route::any('admin/member/member_save_success', 'Admin\MemberController@member_sa
 //修改密码表单
 Route::any('admin/member/save_password', 'Admin\MemberController@save_password');
 
+<<<<<<< HEAD
 //修改密码成功
 Route::any('admin/member/save_password_success', 'Admin\MemberController@save_password_success');
 //回收站批量删除
@@ -243,6 +245,9 @@ Route::any('admin/lc/udel', 'Admin\LcController@udel');
 Route::any('admin/lc/uupdate', 'Admin\LcController@uupdate');
 Route::any('admin/lc/uadd', 'Admin\LcController@uadd');
 Route::any('admin/lc/duadd', 'Admin\LcController@duadd');
+=======
+
+>>>>>>> 9c50dfdbca202f862740c7052b5233dc804b194e
 //================
                 // 添加角色关联的用户
 Route::any('user/user_list', 'Admin\Rbac\UserController@user_list');
@@ -270,6 +275,7 @@ Route::any('role/user_role_list', 'Admin\Rbac\User_roleController@user_role_list
                 // 用户控制
 Route::any('role/user_role_add', 'Admin\Rbac\User_roleController@user_role_add');                  
            
+
 
 Route::get('cookieset', function()
 {
