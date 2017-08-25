@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Input;
 
 
 //产品
-class ProductController extends Controller{
+class ProductController extends Rbac\My_Controller{
     // 产品列表
     public function lists(){
     	return view('Admin/product/lists');

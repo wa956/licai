@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Input;
 
 
 //登录
-class RbacController extends Controller{
+class RbacController extends Rbac\My_Controller{
 	    //管理员  角色
     public function role(){
     	return view('Admin/rbac/role');

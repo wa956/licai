@@ -27,14 +27,13 @@
             <script>
               $('.lx').click(function(){
                     var id = $(this).attr('attr-id');
-//                 alert(id);
-//                    $(this).css('background-color:#00ff00');
                 $.ajax({
                        type:"POST",
                        url:"typeShow",
                        data:{id:id},
                        success:function(data){
                          var str="";
+                         var pagediv="";
                          $.each(data,function(k,v){
                            str+="<div class='item'>";
                            str+="<ul>";
@@ -45,7 +44,6 @@
                           }else{
                             str+="<li class='col-330 col-t'><a href='infor?id="+v.id+"' target='_blank'></a><a class='f18' href='../salary/infor' title='"+ v.productName+"' target='_blank'>"+ v.productName+"</a></li>"
                           }
-                           // str+="<li class='col-330 col-t'><a href='infor?id="+v.id+"' target='_blank'></a><a class='f18' href='../invest/infor' title='"+ v.productName+"' target='_blank'>"+ v.productName+"</a></li>";
                            str+="<li class='col-180'><span class='f20 c-333'>"+ v.productAmount+"</span>元</li>";
                            str+="<li class='col-110 relative'><span class='f20 c-orange'>"+ v.rate+"</span></li>";
                            str+="<li class='col-150'> <span class='f20 c-333'>"+ v.deadline+"</span>个月 </li>";
@@ -60,7 +58,6 @@
                                   }else{
                                     str+="<li class='col-120-2'> <a class='ui-btn btn-gray' href='../salary/infor.html'>还款中</a> </li>";
                                   }
-                                       // str+="<li class='col-120-2'> <a class='ui-btn btn-gray' href='infor.html'>还款中</a> </li>";
                                 }else{
                                   if(v.productTypeId==1){
                                     str+="<li class='col-120-2'> <a class='ui-btn btn-gray' style='background-color: green' href='infor?id="+v.id+"'>加入</a> </li>";
@@ -69,13 +66,19 @@
                                   }else{
                                     str+="<li class='col-120-2'> <a class='ui-btn btn-gray' style='background-color: green' href='../salary/infor?id="+v.id+"'>加入</a> </li>";
                                   }                                  
-                                       // str+="<li class='col-120-2'> <a class='ui-btn btn-gray' style='background-color: green' href='infor?id="+v.id+"'>加入</a> </li>";
                                 }
                          str+="</ul>";
                          str+="</div>";
+                         // var page=data['page'];
+                         // var first=data['first'];
+                         // var prev=data['prev'];
+                         // var next=data['next'];
+                         // var last=data['last'];
+                         // var pages=data['pages'];
+                         // var pagediv='<span class="page"><a href="?page='+first+'" >首页</a><a href="?page='+first+'" >上一页</a>&nbsp;<a href="?page='+next+'" >下一页</a><a href="?page='+last+'" >尾页</a>&nbsp;<em>共'+pages+'页&nbsp;</em></span>';                  
                          })
+                         // $('.pagination clearfix mrt30').html(pagediv);
                          $('#div').html(str);
-
                        }
                 })
               })
@@ -174,7 +177,14 @@
         </div>
         <!------------投资列表-------------->
       </div>
-      <div class="pagination clearfix mrt30"> <span class="page"><a href="javascript:void(0);" onclick="">首页</a><a href="javascript:void(0);" onclick="">上一页</a>&nbsp;<a class="curr" href="javascript:;">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="javascript:void(0);" onclick="#">下一页</a><a href="javascript:void(0);" onclick="#">尾页</a>&nbsp;<em>共2297页&nbsp;</em></span>
+      <div class="pagination clearfix mrt30">
+       <span class="page">
+           <a href="?page=<?= $first?>" >首页</a>
+           <a href="?page=<?= $prev?>" >上一页</a>&nbsp;
+           <a href="?page=<?= $next?>" >下一页</a>
+           <a href="?page=<?= $last?>" >尾页</a>&nbsp;
+           <em>共<?= $pages?>页&nbsp;</em>
+       </span>
         <dl class="page-select">
           <dt><span>1</span><i class="icon icon-down"></i></dt>
           <dd style="display: none;">

@@ -154,7 +154,96 @@
       </ul>
     </div>
     <div class="bd">
-      <div class="ui-tab-item active" style="display: block;">
+      <div class="ui-tab-item" style="display: none;">
+        <div class="repayment-list"> {{--目前投标总额：<span class="c-orange">40,000.00 元</span>&nbsp;&nbsp;
+          剩余投标金额：<span class="c-orange">0.00 元</span>--}}
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tbody>
+              <tr>
+                <th>投标人</th>
+                <th>投标金额</th>
+                <th>投标时间</th>
+                <th>投标方式</th>
+              </tr>
+            </tbody>
+
+
+              @if($orderData)
+              <tbody id="repayment_content">
+            @foreach($moneyData as $v)
+              <tr>
+                <td>{{$v['username']}}</td>
+                <td><span class="c-orange">￥{{$v['orderAmount']}}</span></td>
+                <td>{{$v['time']}}</td>
+                <td>
+                    @if($v['payType'] == 0)
+                        支付宝
+                    @elseif($v['payType'] == 1)
+                        微信
+                    @else
+                        网银
+                    @endif
+                </td>
+              </tr>
+             @endforeach
+            </tbody>
+              @else
+                  暂无记录
+              @endif
+
+            <tfoot>
+              <tr class="page-outer">
+                <td colspan="4" align="center"><div class="pagination clearfix"><span class="page" id="repayment_content_pager"><a class="disabled"> 上一页 </a><a class="curr">1</a><a href="javascript:void(0)">2</a><a href="javascript:void(0)" next="2">下一页</a><em>共2页</em>
+                    <dl class="page-select">
+                      <dt><span>1</span><i class="icon icon-down"></i></dt>
+                      <dd style="display: none;"><a href="javascript:;" total="23" spaninterval="2" content="repayment_content">1</a><a href="javascript:;" total="23" spaninterval="2" content="repayment_content">2</a></dd>
+                    </dl>
+                    </span></div></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="ui-tab-item" style="display: none;">
+        <div class="repayment-list">{{--已还本息：<span class="c-orange">0.00元</span>&nbsp;&nbsp;
+          待还本息：<span class="c-orange">40,400.00元</span>&nbsp;&nbsp;(待还本息因算法不同可能会存误差，实际金额以到账金额为准！)--}}
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr>
+                <th>投资人</th>
+                <th>合约还款日期</th>
+                <th>期数</th>
+                <th>应还本金</th>
+                <th>应还利息</th>
+                <th>应还本息</th>
+                <th>还款状态</th>
+              </tr>
+              @if($orderData)
+              @foreach($orderData as $v)
+              <tr>
+                <td>{{$v['username']}}</td>
+                <td>{{$v['time']}}</td>
+                <td>{{$v['day']}}</td>
+                <td>{{$v['orderAmount']}}</td>
+                <td>{{$v['interest']}}</td>
+                <td>{{$v['num']}}</td>
+                <td>
+                    @if ($v['now'] < $v['entime'])
+                        还款中
+                    @else
+                        已结束
+                    @endif
+                </td>
+              </tr>
+              @endforeach
+              @else
+                暂无记录
+              @endif
+            </tbody>
+          </table>
+        </div>
+      </div>    
+<!--       <div class="ui-tab-item active" style="display: block;">
         <div class="borrow-info">
           <dl class="item">
             <dt>
@@ -302,7 +391,7 @@
           </table>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 

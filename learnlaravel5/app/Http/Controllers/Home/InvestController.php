@@ -18,20 +18,51 @@ class InvestController extends Controller{
     //我要投资首页展示
     public function index()
     {
+        // $page=isset($_GET['page']) ? $_GET['page'] :1 ;
+        // $pagesize=5;
+        // $limit=($page-1)*$pagesize;
+        // $count=DB::table('productinfo')->where("productStatus",1)->count();
+        // $pages=ceil($count/$pagesize);
+        // $first=1;
+        // $prev=$page-1 <1 ? 1 :$page-1;
+        // $next=$page+1 > $pages ? $pages :$page+1;
+        // $last=$pages;               
+        // $model = new Productclass();
+        // $Productinfo = new Productinfo();
+        // $data = $model->Show();
+        // $info = $Productinfo->Show($limit,$pagesize);
+        // return view('Home/invest/index',['data' => $data,'info'=>$info,'first'=>$first,'prev'=>$prev,'next'=>$next,'last'=>$last,'pages'=>$pages]);
         $model = new Productclass();
-        $Productinfo = new Productinfo();
         $data = $model->Show();
-        $info = $Productinfo->Show();
-        return view('Home/invest/index',['data' => $data,'info'=>$info]);
+        if(isset($_GET['typeid'])){
+            $typeid=$_GET['typeid'];
+            if(empty($typeid)){
+                $where="1 = 1";
+            }else{
+                $where="productTypeId = $typeid";
+            }
+            $info=DB::table("productinfo")->whereRaw($where)->paginate(4)->toArray();
+            $info['prev_page_url']=$info['prev_page_url']."&typeid=$typeid";
+            $info['next_page_url']=$info['next_page_url']."&typeid=$typeid";
+            if($info['prev_page_url']=="&typeid=$typeid"){
+                $info['prev_page_url']="";
+            }
+            if($info['next_page_url']=="&typeid=$typeid"){
+                $info['next_page_url']="";
+            }
+        }else{
+            $info=DB::table("productinfo")->paginate(4)->toArray();
+            $typeid="";
+        }
+        return view('Home/invest/index',['data' => $data,'info'=>$info,'typeid'=>$typeid]);
     }
     //投资分类下项目的展示
     public function typeShow()
     {
-        $id = input::get('id');
+        $id = input::get('id');     
         $Productinfo = new Productinfo();
         $data = $Productinfo->whereShow($id);
         $info =  ajaxJsonencode($data);
-
         return $info;
     }
 
@@ -40,8 +71,6 @@ class InvestController extends Controller{
     {
         $id = input::get('id');
         $user_id = session('user_id');
-//        $user_id = 1;
-//        p($name);die;
         //项目详情表
         $Productinfo = new Productinfo();
         //用户详情表
@@ -50,6 +79,10 @@ class InvestController extends Controller{
         $data = $Productinfo->oneShow($id);
         //用户详情数组
         $userdata = $userinfo->oneShow($user_id);
+        //产品所属投资记录详情
+        $orderData=Order::productOrder($id);
+        //产品借款详情
+        $moneyData=Order::orderMoney($id);
         //处理数组
         $info =  ajaxJsonencode($data);
         //处理数组
@@ -74,7 +107,7 @@ class InvestController extends Controller{
                 $info = $info;
         }
 
-        return view('Home/invest/infor',['data'=>$info,'userdata'=>$info2,'ensj'=>$sj]);
+        return view('Home/invest/infor',['data'=>$info,'userdata'=>$info2,'ensj'=>$sj,'orderData'=>$orderData,'moneyData'=>$moneyData]);
 
     }
   // 校验身份证号码 邮箱是否绑定

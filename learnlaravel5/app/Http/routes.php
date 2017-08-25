@@ -79,7 +79,7 @@ Route::any('my/account', 'Home\MyController@account');
 Route::any('my/novice', 'Home\MyController@novice');
 
 
-//我要投资 首页
+//===================我要投资 首页=================
 Route::any('invest/index', 'Home\InvestController@index');
 //我要投资 详情
 Route::any('invest/infor', 'Home\InvestController@infor');
@@ -91,8 +91,7 @@ Route::any('invest/typeShow', 'Home\InvestController@typeShow');
 Route::any('invest/order', 'Home\InvestController@order');
 //添加订单
 Route::any('invest/addOrder', 'Home\InvestController@addOrder');
-
-//我要投资（薪计划） 首页
+//===================（薪计划）首页=================
 Route::any('salary/index', 'Home\SalaryController@index');
 //我要投资 详情 
 Route::any('salary/infor', 'Home\SalaryController@infor');
@@ -104,6 +103,16 @@ Route::any('salary/typeShow', 'Home\SalaryController@typeShow');
 Route::any('salary/order', 'Home\SalaryController@order');
 //添加订单
 Route::any('salary/addOrder', 'Home\SalaryController@addOrder');
+//===================（优选计划）首页=================
+Route::any('uxplan/infor', 'Home\UxplanController@infor');
+//校验
+Route::any('uxplan/jiaoyan', 'Home\UxplanController@jiaoyan');
+//分类查询
+Route::any('uxplan/typeShow', 'Home\UxplanController@typeShow');
+//订单展示
+Route::any('uxplan/order', 'Home\UxplanController@order');
+//添加订单
+Route::any('uxplan/addOrder', 'Home\UxplanController@addOrder');
 
 
 //手机验证
@@ -160,12 +169,9 @@ Route::any('alipay','Home\alipayController@Alipay');  // 发起支付请求
 Route::any('notify','Home\alipayController@AliPayNotify'); //服务器异步通知页面路径
 Route::any('return','Home\alipayController@AliPayReturn');  //页面跳转同步通知页面路径
 
-
-
- 
 //后台  首页
 Route::any('admin/index', 'Admin\IndexController@index');
-
+    //首页展示
 Route::any('admin/welcome', 'Admin\IndexController@welcome');
     //登录
 Route::any('admin/login', 'Admin\LoginController@index');
@@ -179,6 +185,8 @@ Route::any('admin/login_out', 'Admin\LoginController@login_out');
 Route::any('admin/member/lists', 'Admin\MemberController@lists');
     // 会员添加
 Route::any('admin/member/add', 'Admin\MemberController@add');
+    //会员add
+Route::any('admin/member/add_s', 'Admin\MemberController@add_s');
     //会员删除
 Route::any('admin/member/del', 'Admin\MemberController@del');
     //产品管理 产品列表
@@ -199,7 +207,42 @@ Route::any('admin/rbac/permission', 'Admin\RbacController@permission');
 Route::any('admin/rbac/admin_list', 'Admin\RbacController@admin_list');
     // 管理员添加
 Route::any('admin/rbac/admin_add', 'Admin\RbacController@admin_add');
+    //删除会员，放入回收站
+Route::any('admin/member/member_del', 'Admin\MemberController@member_del');
+//编辑
+Route::any('admin/member/member_save', 'Admin\MemberController@member_save');
+//编辑成功
+Route::any('admin/member/member_save_success', 'Admin\MemberController@member_save_success');
 
+//修改密码表单
+Route::any('admin/member/save_password', 'Admin\MemberController@save_password');
+
+//修改密码成功
+Route::any('admin/member/save_password_success', 'Admin\MemberController@save_password_success');
+//回收站批量删除
+Route::any('admin/member/true_del_all', 'Admin\MemberController@true_del_all');
+////会员列表批量删除
+Route::any('admin/member/mem_del_all', 'Admin\MemberController@mem_del_all');
+//还原
+Route::any('admin/member/member_huanyuan', 'Admin\MemberController@member_huanyuan');
+//彻底删除
+Route::any('admin/member/delete_it', 'Admin\MemberController@delete_it');
+// 红包管理
+Route::any('admin/redbag/add', 'Admin\RedBagController@index');
+Route::any('admin/redbag/doAdd', 'Admin\RedBagController@doAdd');
+Route::any('admin/redbag/show', 'Admin\RedBagController@welcome');
+Route::any('admin/redbag/red', 'Admin\RedBagController@redIndex');
+Route::any('admin/redbag/doData', 'Admin\RedBagController@addData');
+Route::any('admin/redbag/lists', 'Admin\RedBagController@lists');
+Route::any('admin/redbag/del', 'Admin\RedBagController@delData');
+//投资管理
+Route::any('admin/lc/uplan', 'Admin\LcController@uplan');
+Route::any('admin/lc/uxplan', 'Admin\LcController@uxplan');
+Route::any('admin/lc/xplan', 'Admin\LcController@xplan');
+Route::any('admin/lc/udel', 'Admin\LcController@udel');
+Route::any('admin/lc/uupdate', 'Admin\LcController@uupdate');
+Route::any('admin/lc/uadd', 'Admin\LcController@uadd');
+Route::any('admin/lc/duadd', 'Admin\LcController@duadd');
 //================
                 // 添加角色关联的用户
 Route::any('user/user_list', 'Admin\Rbac\UserController@user_list');

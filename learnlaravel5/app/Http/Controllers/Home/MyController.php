@@ -15,7 +15,7 @@ set_time_limit(0);
 use App\Http\Model\Home\RedBag;
 use App\Http\Model\Home\My;
 use App\Http\Model\Home\Bank;
-use App\Http\Model\Home\Common;
+use App\Http\Controllers\Home\CommonController;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Session\CookieSessionHandler;
 
@@ -23,7 +23,7 @@ use Illuminate\Session\CookieSessionHandler;
 
 
 //首页
-class MyController extends Controller{
+class MyController extends CommonController{
 
     public function index()
     {

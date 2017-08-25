@@ -70,10 +70,12 @@ $(document).ready(function() {
           <div class=""><a href="register" class="c-orange" title="免费注册">免费注册</a></div>
         </li>
         <li>
-          <div class=""><a href="login" class="js-login" title="登录">登录</a></div>
+          <div class=""><a href="loginout" class="js-login" title="退出"><?php if((session('user_id'))){
+                      echo(session('user_name'));
+                  }else{
+                      echo"登录";
+                  }?></a></div>
         </li>
-
-          <li><div style="color: #0fa24e"><a href="loginout" class="js-login" title="退出">{{session('user_name')}}</a></div></li>
       </ul>
     </div>
   </div>

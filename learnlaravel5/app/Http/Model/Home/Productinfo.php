@@ -18,15 +18,21 @@ class Productinfo extends Model
     protected $table='Productinfo';
     public $timestamps=false;
     //查询
-    public function Show()
+    public function Show($limit,$pagesize)
     {
-        $data = DB::table('productinfo')->where("productStatus",1)->get();
+        $data = DB::table('productinfo')
+                ->where("productStatus",1)
+                ->offset($limit)
+                ->limit($pagesize)                
+                ->get();
         return $data;
     }
 
     public function whereShow($id)
     {
-        $data = DB::table('productinfo')->where("productTypeId",$id)->get();
+        $data = DB::table('productinfo')
+                ->where("productTypeId",$id)                          
+                ->get();
         return $data;
     }
 

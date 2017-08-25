@@ -23,7 +23,6 @@ class My_Controller extends BaseController
 	 */
 	public function __construct(Request $Request){
 		$uri = $Request->path();
-		// print_r($uri);exit;
 		$user_cookie = Cookie::get('user');
 		$user_id = substr($user_cookie['value'], -1);
 		// 排除uri以及超级管理员身份

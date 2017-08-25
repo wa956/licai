@@ -51,6 +51,10 @@ class SalaryController extends Controller{
         $data = $Productinfo->oneShow($id);
         //用户详情数组
         $userdata = $userinfo->oneShow($user_id);
+        //产品所属投资记录详情
+        $orderData=Order::productOrder($id);
+        //产品借款详情
+        $moneyData=Order::orderMoney($id);
         //处理数组
         $info =  ajaxJsonencode($data);
         //投标人数
@@ -76,7 +80,7 @@ class SalaryController extends Controller{
                 $info = $info;
         }
 
-        return view('Home/salary/infor',['data'=>$info,'userdata'=>$info2,'ensj'=>$sj,'sheng'=>$sheng]);
+        return view('Home/salary/infor',['data'=>$info,'userdata'=>$info2,'ensj'=>$sj,'sheng'=>$sheng,'orderData'=>$orderData,'moneyData'=>$moneyData]]);
 
     }
   // 校验身份证号码 邮箱是否绑定
