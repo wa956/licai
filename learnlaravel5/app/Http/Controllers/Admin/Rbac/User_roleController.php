@@ -40,6 +40,6 @@ class User_roleController extends My_Controller
 		$user_id = input::get('box_id');	
 		$model = new User_role();
 		$res = $model -> user_role_add($role_id, $user_id);
-		return redirect('role/user_role_list?id='.$role_id);
+		return redirect('admin/role/user_role_list?id='.$role_id);
 	}
 }

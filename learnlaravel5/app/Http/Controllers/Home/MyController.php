@@ -15,6 +15,7 @@ set_time_limit(0);
 use App\Http\Model\Home\RedBag;
 use App\Http\Model\Home\My;
 use App\Http\Model\Home\Bank;
+use App\Http\Model\Home\Common;
 use App\Http\Controllers\Home\CommonController;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Session\CookieSessionHandler;
@@ -46,9 +47,6 @@ class MyController extends CommonController{
     }
     //开通第三方
     public function openthird(){
-//        Cache::put('id',1,60);
-//        session('user_id')
-//        $user_id=Cache::get('id');
          $user_id = session('user_id');
         $model=new My();
         if($post=Input::get()){
@@ -60,18 +58,13 @@ class MyController extends CommonController{
         }
         // return view('Home/my/openthird');
     }
-    // public function ok(){
-    //     return view('Home/my/ok');
-    // }
     //渲染第三方
     public function openthird1(){
         $user_id = session('user_id');
         $model=new My();
         $model1=new Bank();
         $data=$model->getuser($user_id);
-        // print_r($data);
         $banks=$model1->banks();
-        // print_r($banks);
         return view('Home/my/openthird1',['data'=>$data,'banks'=>$banks]);
     }
     //充值

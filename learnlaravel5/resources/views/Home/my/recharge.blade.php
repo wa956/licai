@@ -475,10 +475,10 @@
             		<form id="notOpenAccountForm">
 		        		<p class="msg6" align="center">
 		        			用户在充值或提现前，需开通第三方账户。<br>
-		        			此页面将在10秒后自动跳转到开通第三方账户页面<br>
-		        			<em id="show-number">3</em>
+		        			<!-- 此页面将在10秒后自动跳转到开通第三方账户页面<br>
+		        			<em id="show-number">3</em> -->
 		        		</p>
-		        		<a href="/user/depositAuthenticationAccount" id="openAccountAId" class="btn-ok txt-center">马上开通第三方账户</a>
+		        		<a href="openthird1" id="" class="btn-ok txt-center">马上开通第三方账户</a>
 		        	</form>
             	</div>
             </div>

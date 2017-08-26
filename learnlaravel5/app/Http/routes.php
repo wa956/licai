@@ -178,6 +178,8 @@ Route::any('admin/welcome', 'Admin\IndexController@welcome');
 Route::any('admin/login', 'Admin\LoginController@index');
     //登录执行
 Route::any('admin/login_do', 'Admin\LoginController@login_do');
+// 验证密码是否匹配用户名
+Route::any('admin/username_find', 'Admin\LoginController@username_find');
      // 验证密码
 Route::any('admin/password_list', 'Admin\LoginController@password_list');   
     // 退出
@@ -198,16 +200,7 @@ Route::any('admin/product/add', 'Admin\ProductController@add');
 Route::any('admin/product/category','Admin\ProductController@category');
     //产品管理 产品分类添加
 Route::any('admin/product/category_add','Admin\ProductController@category_add');
-    //管理员  角色
-Route::any('admin/rbac/role', 'Admin\RbacController@role');
-    //管理员  角色添加
-Route::any('admin/rbac/role_add', 'Admin\RbacController@role_add');
-    //权限
-Route::any('admin/rbac/permission', 'Admin\RbacController@permission');
-    // 管理员列表
-Route::any('admin/rbac/admin_list', 'Admin\RbacController@admin_list');
-    // 管理员添加
-Route::any('admin/rbac/admin_add', 'Admin\RbacController@admin_add');
+//     //管理员  角色
     //删除会员，放入回收站
 Route::any('admin/member/member_del', 'Admin\MemberController@member_del');
 //编辑
@@ -217,8 +210,6 @@ Route::any('admin/member/member_save_success', 'Admin\MemberController@member_sa
 
 //修改密码表单
 Route::any('admin/member/save_password', 'Admin\MemberController@save_password');
-
-<<<<<<< HEAD
 //修改密码成功
 Route::any('admin/member/save_password_success', 'Admin\MemberController@save_password_success');
 //回收站批量删除
@@ -245,35 +236,35 @@ Route::any('admin/lc/udel', 'Admin\LcController@udel');
 Route::any('admin/lc/uupdate', 'Admin\LcController@uupdate');
 Route::any('admin/lc/uadd', 'Admin\LcController@uadd');
 Route::any('admin/lc/duadd', 'Admin\LcController@duadd');
-=======
 
->>>>>>> 9c50dfdbca202f862740c7052b5233dc804b194e
-//================
+//================RBAC============
                 // 添加角色关联的用户
-Route::any('user/user_list', 'Admin\Rbac\UserController@user_list');
+Route::any('admin/user/user_list', 'Admin\Rbac\UserController@user_list');
                 // 管理员列表
-Route::any('user/user_add_list', 'Admin\Rbac\UserController@user_add_list');           //删除管理员
-Route::any('user/user_del', 'Admin\Rbac\UserController@user_del');           // 权限控制
-Route::any('note/note_list', 'Admin\Rbac\NoteController@note_list');           // 添加权限
-Route::any('note/note_add_list', 'Admin\Rbac\NoteController@note_add_list');           //权限提交
-Route::any('note/note_add_do', 'Admin\Rbac\NoteController@note_add_do');
+Route::any('admin/user/user_add_list', 'Admin\Rbac\UserController@user_add_list');           
+                //删除管理员
+Route::any('admin/user/user_del', 'Admin\Rbac\UserController@user_del');           // 权限控制
+Route::any('admin/note/note_list', 'Admin\Rbac\NoteController@note_list');           // 添加权限
+Route::any('admin/note/note_add_list', 'Admin\Rbac\NoteController@note_add_list');           
+                //权限提交
+Route::any('admin/note/note_add_do', 'Admin\Rbac\NoteController@note_add_do');
                //删除权限
-Route::any('note/note_del', 'Admin\Rbac\NoteController@note_del');
+Route::any('admin/note/note_del', 'Admin\Rbac\NoteController@note_del');
                //更新权限名称
-Route::any('note/name_up', 'Admin\Rbac\NoteController@name_up');
+Route::any('admin/note/name_up', 'Admin\Rbac\NoteController@name_up');
            // 角色控制
-Route::any('role/role_list', 'Admin\Rbac\RoleController@role_list');           // 添加控制
-Route::any('role/role_add_list', 'Admin\Rbac\RoleController@role_add_list');           // 角色提交
-Route::any('role/role_add_do', 'Admin\Rbac\RoleController@role_add_do');           // 角色提交
-Route::any('user/user_add_do', 'Admin\Rbac\UserController@user_add_do');  
+Route::any('admin/role/role_list', 'Admin\Rbac\RoleController@role_list');           // 添加控制
+Route::any('admin/role/role_add_list', 'Admin\Rbac\RoleController@role_add_list');           // 角色提交
+Route::any('admin/role/role_add_do', 'Admin\Rbac\RoleController@role_add_do');           // 角色提交
+Route::any('admin/user/user_add_do', 'Admin\Rbac\UserController@user_add_do');  
                 // 权限控制
-Route::any('role/role_note_list', 'Admin\Rbac\Role_noteController@role_note_list');   
+Route::any('admin/role/role_note_list', 'Admin\Rbac\Role_noteController@role_note_list');   
                 // 权限添加
-Route::any('role/role_note_add', 'Admin\Rbac\Role_noteController@role_note_add');                 
+Route::any('admin/role/role_note_add', 'Admin\Rbac\Role_noteController@role_note_add');                 
                 // 添加角色关联的权限
-Route::any('role/user_role_list', 'Admin\Rbac\User_roleController@user_role_list');                
+Route::any('admin/role/user_role_list', 'Admin\Rbac\User_roleController@user_role_list');                
                 // 用户控制
-Route::any('role/user_role_add', 'Admin\Rbac\User_roleController@user_role_add');                  
+Route::any('admin/role/user_role_add', 'Admin\Rbac\User_roleController@user_role_add');                  
            
 
 
@@ -290,8 +281,3 @@ Route::get('cookietest', function()
     $temporary = Cookie::get('temporary');
     return View::make('cookietest', array('forever' => $forever, 'temporary' => $temporary, 'variableTest' => 'it works'));
 });
-
-
-
-
-

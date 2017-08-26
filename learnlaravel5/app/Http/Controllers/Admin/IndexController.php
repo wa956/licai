@@ -10,6 +10,7 @@ class IndexController extends Rbac\My_Controller{
     public function index()
     {
     	$data = $this->createLoginList();
+    	// print_r($data);die;
         return view('Admin/index/index',['name'=>$data['name']]);
     }
     public function welcome()

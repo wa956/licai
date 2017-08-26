@@ -16,9 +16,9 @@
             <dt>项目类型</dt>
             <dd>
               <ul>
-                <li class="n1"><a href="javascript:url('post_type','');" id="post_type_" class="active">不限</a></li>
+                <li class="n1"><a href="http://www.duoying.com/invest/index" id="post_type_" class="active">不限</a></li>
                 <?php foreach($data as $k=>$v) { ?>
-                <li class="n2"><a href="javascript:url('post_type','car');" id="post_type_car" class="lx" attr-id="<?php echo $v->id?>"><?php echo $v->typeName?></a></li>
+                <li class="n2"><a href="?typeid=<?php echo $v->id?>" id="post_type_car" class="lx" attr-id="<?php echo $v->id?>"><?php echo $v->typeName?></a></li>
                 <?php } ?>
               </ul>
             </dd>
@@ -33,17 +33,17 @@
                        data:{id:id},
                        success:function(data){
                          var str="";
-                         var pagediv="";
                          $.each(data,function(k,v){
                            str+="<div class='item'>";
                            str+="<ul>";
                           if(v.productTypeId==1){
-                            str+="<li class='col-330 col-t'><a href='infor?id="+v.id+"' target='_blank'></a><a class='f18' href='../invest/infor' title='"+ v.productName+"' target='_blank'>"+ v.productName+"</a></li>";
+                            str+="<li class='col-330 col-t'><a href='infor?id="+v.id+"' target='_blank'></a><a class='f18' href='' title='"+ v.productName+"' target='_blank'>"+ v.productName+"</a></li>";
                           }else if(v.productTypeId==2){
-                            str+="<li class='col-330 col-t'><a href='infor?id="+v.id+"' target='_blank'></a><a class='f18' href='../uxplan/infor' title='"+ v.productName+"' target='_blank'>"+ v.productName+"</a></li>";
+                            str+="<li class='col-330 col-t'><a href='infor?id="+v.id+"' target='_blank'></a><a class='f18' href='' title='"+ v.productName+"' target='_blank'>"+ v.productName+"</a></li>";
                           }else{
-                            str+="<li class='col-330 col-t'><a href='infor?id="+v.id+"' target='_blank'></a><a class='f18' href='../salary/infor' title='"+ v.productName+"' target='_blank'>"+ v.productName+"</a></li>"
+                            str+="<li class='col-330 col-t'><a href='infor?id="+v.id+"' target='_blank'></a><a class='f18' href='' title='"+ v.productName+"' target='_blank'>"+ v.productName+"</a></li>"
                           }
+                           // str+="<li class='col-330 col-t'><a href='infor?id="+v.id+"' target='_blank'></a><a class='f18' href='../invest/infor' title='"+ v.productName+"' target='_blank'>"+ v.productName+"</a></li>";
                            str+="<li class='col-180'><span class='f20 c-333'>"+ v.productAmount+"</span>元</li>";
                            str+="<li class='col-110 relative'><span class='f20 c-orange'>"+ v.rate+"</span></li>";
                            str+="<li class='col-150'> <span class='f20 c-333'>"+ v.deadline+"</span>个月 </li>";
@@ -58,6 +58,7 @@
                                   }else{
                                     str+="<li class='col-120-2'> <a class='ui-btn btn-gray' href='../salary/infor.html'>还款中</a> </li>";
                                   }
+                                       // str+="<li class='col-120-2'> <a class='ui-btn btn-gray' href='infor.html'>还款中</a> </li>";
                                 }else{
                                   if(v.productTypeId==1){
                                     str+="<li class='col-120-2'> <a class='ui-btn btn-gray' style='background-color: green' href='infor?id="+v.id+"'>加入</a> </li>";
@@ -66,58 +67,17 @@
                                   }else{
                                     str+="<li class='col-120-2'> <a class='ui-btn btn-gray' style='background-color: green' href='../salary/infor?id="+v.id+"'>加入</a> </li>";
                                   }                                  
+                                       // str+="<li class='col-120-2'> <a class='ui-btn btn-gray' style='background-color: green' href='infor?id="+v.id+"'>加入</a> </li>";
                                 }
                          str+="</ul>";
                          str+="</div>";
-                         // var page=data['page'];
-                         // var first=data['first'];
-                         // var prev=data['prev'];
-                         // var next=data['next'];
-                         // var last=data['last'];
-                         // var pages=data['pages'];
-                         // var pagediv='<span class="page"><a href="?page='+first+'" >首页</a><a href="?page='+first+'" >上一页</a>&nbsp;<a href="?page='+next+'" >下一页</a><a href="?page='+last+'" >尾页</a>&nbsp;<em>共'+pages+'页&nbsp;</em></span>';                  
                          })
-                         // $('.pagination clearfix mrt30').html(pagediv);
                          $('#div').html(str);
+
                        }
                 })
               })
             </script>
-            {{--<dt>年利率</dt>--}}
-            {{--<dd>--}}
-              {{--<ul>--}}
-                {{--<li class="n1"><a href="javascript:url('borrow_interestrate','');" id="borrow_interestrate_" class="active">不限</a></li>--}}
-                {{--<li class="n2"><a id="borrow_interestrate_1" href="javascript:url('borrow_interestrate','1');">12%以下</a> </li>--}}
-                {{--<li class="n3"><a id="borrow_interestrate_2" href="javascript:url('borrow_interestrate','2');">12%-14%</a> </li>--}}
-                {{--<li class="n4"><a id="borrow_interestrate_3" href="javascript:url('borrow_interestrate','3');">14%-16%</a> </li>--}}
-                {{--<li class="n5"><a id="borrow_interestrate_4" href="javascript:url('borrow_interestrate','4');">16%及以上</a> </li>--}}
-              {{--</ul>--}}
-            {{--</dd>--}}
-          {{--</dl>--}}
-          {{--<dl>--}}
-            {{--<dt>期限</dt>--}}
-            {{--<dd>--}}
-              {{--<ul>--}}
-                {{--<li class="n1"><a href="javascript:url('spread_month','');" id="spread_month_" class="active">不限</a> </li>--}}
-                {{--<li class="n2"><a id="spread_month_1" href="javascript:url('spread_month','1');">1月以下</a> </li>--}}
-                {{--<li class="n3"><a id="spread_month_2" href="javascript:url('spread_month','2');">1-3月</a> </li>--}}
-                {{--<li class="n4"><a id="spread_month_3" href="javascript:url('spread_month','3');">3-6月</a> </li>--}}
-                {{--<li class="n5"><a id="spread_month_4" href="javascript:url('spread_month','4');">6-12月</a> </li>--}}
-                {{--<li class="n6"><a id="spread_month_5" href="javascript:url('spread_month','5');">12月及以上</a> </li>--}}
-              {{--</ul>--}}
-            {{--</dd>--}}
-          {{--</dl>--}}
-          {{--<dl class="repayment">--}}
-            {{--<dt>还款方式</dt>--}}
-            {{--<dd>--}}
-              {{--<ul>--}}
-                {{--<li class="n1"><a href="javascript:url('repay_style','');" id="repay_style_" class="active">不限</a></li>--}}
-                {{--<li class="n2"><a id="repay_style_end" href="javascript:url('repay_style','end');">到期还本付息</a> </li>--}}
-                {{--<li class="n2"><a id="repay_style_endmonth" href="javascript:url('repay_style','endmonth');">按月付息,到期还本</a> </li>--}}
-                {{--<li class="n2"><a id="repay_style_month" href="javascript:url('repay_style','month');">等额本息</a> </li>--}}
-              {{--</ul>--}}
-            {{--</dd>--}}
-          {{--</dl>--}}
         </div>
       </div>
       <div class="common-problem">
@@ -156,10 +116,19 @@
         </div>
         <!------------投资列表-------------->
         <div id="div">
-        <?php foreach($info as $k=>$v) { ?>
+        <?php foreach($info['data'] as $k=>$v) { ?>
         <div class="item">
           <ul>
-            <li class="col-330 col-t"><a href="infor?id=<?php echo $v->id?>" target="_blank"></a><a class="f18" href="infor?id=<?php echo $v->id?>" title="<?php echo $v->productName ?>" target="_blank"><?php echo $v->productName ?> </a></li>
+            <li class="col-330 col-t">
+            <a href="infor?id=<?php echo $v->id?>" target="_blank"></a>
+              <?php  if($v->productTypeId==1){ ?>
+                 <a class="f18" href="infor?id=<?php echo $v->id?>" title="<?php echo $v->productName ?>" target="_blank"><?php echo $v->productName ?> </a>
+             <?php  }else if($v->productTypeId==2){ ?>
+                 <a class="f18" href="../uxplan/infor?id=<?php echo $v->id?>" title="<?php echo $v->productName ?>" target="_blank"><?php echo $v->productName ?> </a>
+              <?php  }else{ ?>
+                 <a class="f18" href="../salary/infor?id=<?php echo $v->id?>" title="<?php echo $v->productName ?>" target="_blank"><?php echo $v->productName ?> </a>
+             <?php  } ?>           
+            </li>
             <li class="col-180"><span class="f20 c-333"><?php echo $v->productAmount?></span>元</li>
             <li class="col-110 relative"><span class="f20 c-orange"><?php echo $v->rate?></span></li>
             <li class="col-150"> <span class="f20 c-333"><?php echo $v->deadline?></span>个月 </li>
@@ -167,9 +136,21 @@
             <li class="col-120">
             </li>
             <?php if($v->contact == 1) { ?>
-            <li class="col-120-2"> <a class="ui-btn btn-gray" href="infor.html">还款中</a> </li>
+              <?php  if($v->productTypeId==1){ ?>
+                  <li class="col-120-2"> <a class="ui-btn btn-gray" href="infor.html">还款中</a> </li>              
+             <?php  }else if($v->productTypeId==2){ ?>
+                 <li class="col-120-2"> <a class="ui-btn btn-gray" href="../uxplan/infor.html">还款中</a> </li>             
+              <?php  }else{ ?>
+                 <li class="col-120-2"> <a class="ui-btn btn-gray" href="../salary/infor.html">还款中</a> </li>
+              <?php  } ?>             
             <?php }else{ ?>
-            <li class="col-120-2"> <a class="ui-btn btn-gray" style="background-color: green" href="infor?id=<?php echo $v->id?>">加入</a> </li>
+              <?php  if($v->productTypeId==1){ ?>
+                   <li class="col-120-2"> <a class="ui-btn btn-gray" style="background-color: green" href="infor?id=<?php echo $v->id?>">加入</a> </li>             
+             <?php  }else if($v->productTypeId==2){ ?>
+                    <li class="col-120-2"> <a class="ui-btn btn-gray" style="background-color: green" href="../uxplan/infor?id=<?php echo $v->id?>">加入</a> </li>          
+              <?php  }else{ ?>
+                    <li class="col-120-2"> <a class="ui-btn btn-gray" style="background-color: green" href="../salary/infor?id=<?php echo $v->id?>">加入</a> </li>
+              <?php  } ?>               
             <?php } ?>
           </ul>
         </div>
@@ -177,25 +158,17 @@
         </div>
         <!------------投资列表-------------->
       </div>
-      <div class="pagination clearfix mrt30">
-       <span class="page">
-           <a href="?page=<?= $first?>" >首页</a>
-           <a href="?page=<?= $prev?>" >上一页</a>&nbsp;
-           <a href="?page=<?= $next?>" >下一页</a>
-           <a href="?page=<?= $last?>" >尾页</a>&nbsp;
-           <em>共<?= $pages?>页&nbsp;</em>
-       </span>
-        <dl class="page-select">
-          <dt><span>1</span><i class="icon icon-down"></i></dt>
-          <dd style="display: none;">
-            <ul name="nump" id="jsnump">
-              <li><a href="##" onclick="page_jump(&quot;this&quot;,1)">1</a></li>
-              <li><a href="##" onclick="page_jump(&quot;this&quot;,2)">2</a></li>
-              <li><a href="##" onclick="page_jump(&quot;this&quot;,3)">3</a></li>
-            </ul>
-          </dd>
-        </dl>
+      <div>
+        <a href="?page=1&typeid=<?php echo $typeid?>">首页</a>
+        <a href="<?php echo $info['prev_page_url']?>">上一页</a>
+        <a href="<?php echo $info['next_page_url']?>">下一页</a>
+        <a href="?page=<?php echo $info['last_page']?>&typeid=<?php echo $typeid?>">末页</a>
+        共<?php echo $info['last_page']?>页
+
+        当前为：第<?php echo $info['current_page']?>页
+
       </div>
+
       
     </div>
   </div>

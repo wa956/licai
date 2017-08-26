@@ -50,7 +50,7 @@ class UserController extends My_Controller
 		$model  = new Test();
         $re = $model -> registered_do($username, $email, $password);
         if($re){
-        	return redirect('/user/user_list');
+        	return redirect('admin/user/user_list');
         }
 	}
 	public function user_del(){

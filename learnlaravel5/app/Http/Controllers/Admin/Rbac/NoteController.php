@@ -53,7 +53,7 @@ class NoteController extends My_Controller
 		$zh_name = input::get('zh_name');
 		$model  = new Note();
         $re = $model -> note_add_do($name, $zh_name);
-        return redirect('note/note_list');
+        return redirect('admin/note/note_list');
 	}
 	public function note_del(){
 		$id=input::get('id');

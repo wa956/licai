@@ -1,15 +1,5 @@
 @section('left')
 	<div class="menu_dropdown bk_2">
-		<dl id="menu-product">
-			<dt><i class="Hui-iconfont">&#xe620;</i> 产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
-				<ul>
-				<!-- 	<li><a data-href="product-brand.html" data-title="品牌管理" href="javascript:void(0)">品牌管理</a></li> -->
-					<li><a data-href="../admin/product/category" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
-					<li><a data-href="../admin/product/lists" data-title="产品管理" href="javascript:void(0)">产品管理</a></li>
-			</ul>
-		</dd>
-	</dl>
 		<dl id="menu-member">
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
@@ -23,9 +13,9 @@
 			<dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="../../admin/rbac/role" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
-					<li><a data-href="../../admin/rbac/permission" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
-					<li><a data-href="../../admin/rbac/admin_list" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
+					<li><a data-href="../../admin/role/role_list" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
+					<li><a data-href="../../admin/note/note_list" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
+					<li><a data-href="../../admin/user/user_list" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -38,6 +28,16 @@
 					<li><a data-href="../../admin/lc/xplan" data-title="薪计划" href="javascript:void(0)">薪计划</a></li>
 			</ul>
 		</dd>
-	</dl>	
+	</dl>
+	<dl id="menu-product">
+	    <dt><i class="Hui-iconfont">&#xe620;</i> 红包管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+	    <dd>
+	        <ul>
+	            <!-- 	<li><a data-href="product-brand.html" data-title="品牌管理" href="javascript:void(0)">品牌管理</a></li> -->
+	            <li><a data-href="../admin/redbag/show" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
+	            <li><a data-href="../admin/redbag/lists" data-title="红包管理" href="javascript:void(0)">红包管理</a></li>
+	        </ul>
+	    </dd>
+	</dl>		
 </div>
 @show

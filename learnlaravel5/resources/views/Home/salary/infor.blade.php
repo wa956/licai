@@ -37,7 +37,7 @@
                    <div class="text"> 账户余额：&nbsp;&nbsp;<a href="../login">登陆</a>&nbsp;&nbsp;&nbsp;&nbsp;后可见<br>
 
               <?php }else{ ?>
-                     <form action="../salary/order" method="post">
+                     <form action="order" method="post">
                          <div class="text"> 账户余额：&nbsp;&nbsp;<span class="f24 c-333" style="color: red"><?php echo $userdata['money']?>&nbsp;&nbsp;</span>元
                          <a href="../my/recharge1" style="margin-left: 100px;">充值</a><br>
                            <input type="hidden" name="user_id" value="<?php echo $userdata['id']?>">

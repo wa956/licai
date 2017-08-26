@@ -47,6 +47,6 @@ class RoleController extends My_Controller
 		$name = input::get('name');
 		$model  = new Role();
         $re = $model -> role_add_do($name);
-        return redirect('role/role_list');
+        return redirect('admin/role/role_list');
 	}
 }

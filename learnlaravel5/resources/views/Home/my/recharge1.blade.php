@@ -418,7 +418,10 @@
 							url:'recharge',
 							data:{thirds_id:thirds_id,rech_money:rech_money1,user_id:huser_id,paypwd:paypwd},
 							success:function(data){
-								alert(data)
+								if(data==0){
+									alert('充值成功');
+									location.href="";
+								}
 							}
 						})
 					}

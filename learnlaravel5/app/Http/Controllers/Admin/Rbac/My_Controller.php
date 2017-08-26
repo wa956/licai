@@ -26,13 +26,13 @@ class My_Controller extends BaseController
 		$user_cookie = Cookie::get('user');
 		$user_id = substr($user_cookie['value'], -1);
 		// 排除uri以及超级管理员身份
-		if($uri == 'admin/welcome' || $uri == 'admin/login' || $uri == 'admin/index' || $uri == 'admin/login_out' || $uri == 'admin/login_do' || $uri == 'admin/password_list' || $user_id == '1'){
+		if($uri == 'admin/welcome' || $uri == 'admin/login' || $uri == 'admin/index' || $uri == 'admin/login_out' || $uri == 'admin/login_do' || $uri == 'admin/password_list' || $uri == 'admin/username_find' || $user_id == '1'){
 			return true;
 		}
 		$user_role = new User_role();
 		$user_rolelist = $user_role -> user_rolelist($user_id);		// 已拥有用户
 		if(empty($user_rolelist)){
-			echo "<script>alert('没有此权限，请联系管理员');history.back()</script>";die;
+			echo "<script>alert('没有此权限，请联系管理员');location.href='../welcome'</script>";exit();
 		}
 		$user_rolelist = json_encode($user_rolelist);
 		$user_rolelist = json_decode($user_rolelist, true);

@@ -18,20 +18,6 @@ class InvestController extends Controller{
     //我要投资首页展示
     public function index()
     {
-        // $page=isset($_GET['page']) ? $_GET['page'] :1 ;
-        // $pagesize=5;
-        // $limit=($page-1)*$pagesize;
-        // $count=DB::table('productinfo')->where("productStatus",1)->count();
-        // $pages=ceil($count/$pagesize);
-        // $first=1;
-        // $prev=$page-1 <1 ? 1 :$page-1;
-        // $next=$page+1 > $pages ? $pages :$page+1;
-        // $last=$pages;               
-        // $model = new Productclass();
-        // $Productinfo = new Productinfo();
-        // $data = $model->Show();
-        // $info = $Productinfo->Show($limit,$pagesize);
-        // return view('Home/invest/index',['data' => $data,'info'=>$info,'first'=>$first,'prev'=>$prev,'next'=>$next,'last'=>$last,'pages'=>$pages]);
         $model = new Productclass();
         $data = $model->Show();
         if(isset($_GET['typeid'])){
@@ -54,6 +40,7 @@ class InvestController extends Controller{
             $info=DB::table("productinfo")->paginate(4)->toArray();
             $typeid="";
         }
+        // p($info);
         return view('Home/invest/index',['data' => $data,'info'=>$info,'typeid'=>$typeid]);
     }
     //投资分类下项目的展示

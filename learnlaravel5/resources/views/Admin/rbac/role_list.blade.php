@@ -30,7 +30,7 @@
 			<button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜权限节点</button>
 		</form>
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" href="../../role/role_add_list"><i class="Hui-iconfont">&#xe600;</i> 添加角色</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" href="../../admin/role/role_add_list"><i class="Hui-iconfont">&#xe600;</i> 添加角色</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
 	<table class="table table-border table-bordered table-bg">
 		<thead>
 			<tr>
@@ -52,9 +52,8 @@
 				<td><?= $value->name ?></td>
 				<td><?= $value->created_time ?></td>
 				<td>
-				<!-- <a class="btn btn-primary radius" href="../../role/user_role_list"><i class="Hui-iconfont">&#xe600;</i> 添加角色</a> -->
-				<a title="编辑" href="../../role/user_role_list?id=<?= $value->id ?>"  class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
-				<a title="编辑" href="../../role/role_note_list?id=<?= $value->id ?>"  class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
+				<a title="编辑" href="../../admin/role/user_role_list?id=<?= $value->id ?>"  class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
+				<a title="编辑" href="../../admin/role/role_note_list?id=<?= $value->id ?>"  class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a></td>
 			</tr>
 		<?php endforeach ?>	
 		</tbody>

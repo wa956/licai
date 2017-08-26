@@ -39,6 +39,6 @@ class Role_noteController extends My_Controller
 		$note_id = input::get('box_id');	
 		$model = new Role_note();
 		$res = $model -> role_note_add($role_id, $note_id);
-		return redirect('role/role_note_list?id='.$role_id);
+		return redirect('admin/role/role_note_list?id='.$role_id);
 	}
 }
